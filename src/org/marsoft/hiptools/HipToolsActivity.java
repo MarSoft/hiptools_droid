@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HipToolsActivity extends Activity {
@@ -23,11 +23,15 @@ public class HipToolsActivity extends Activity {
         Gallery g = (Gallery) findViewById(R.id.gallery1);
         g.setAdapter(new ImageAdapter(this));
         
-        g.setOnItemClickListener(new OnItemClickListener() {
-        	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        g.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+        	public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
         		Toast.makeText(HipToolsActivity.this, "" + position, Toast.LENGTH_SHORT).show();
         	}
-		});
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+			}
+        });
     }
     
     public class ImageAdapter extends BaseAdapter {
@@ -35,8 +39,8 @@ public class HipToolsActivity extends Activity {
     	private Context mContext;
     	
     	private Integer[] mImageIds = {
-    			R.drawable.sample_1,
-    			R.drawable.sample_2
+    			R.drawable.icon,
+    			R.drawable.icon
     	};
     	
     	public ImageAdapter(Context c) {
@@ -60,14 +64,11 @@ public class HipToolsActivity extends Activity {
     	}
     	
     	public View getView(int position, View convertView, ViewGroup parent) {
-    		ImageView i = new ImageView(mContext);
-    		
-    		i.setImageResource(mImageIds[position]);
-    		i.setLayoutParams(new Gallery.LayoutParams(150, 100));
-    		i.setScaleType(ImageView.ScaleType.FIT_XY);
-    		i.setBackgroundResource(mGalleryItemBackground);
-    		
-    		return i;
+    		TextView t = new TextView(mContext);
+    		t.setText("№"+position);
+    		t.setLayoutParams(new Gallery.LayoutParams(128, 128));
+    		t.setBackgroundResource(mGalleryItemBackground);
+    		return t;
     	}
     }
 }
