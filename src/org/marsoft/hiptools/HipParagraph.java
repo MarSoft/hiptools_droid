@@ -14,7 +14,7 @@ public class HipParagraph implements Iterable<HipSpan> {
 	 * @return
 	 */
 	public String asHip() {
-		// TODO
+		// TODO: теги
 		String ret = "";
 		for(HipSpan s: spans)
 			ret += s.asHip();

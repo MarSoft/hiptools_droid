@@ -2,11 +2,23 @@ package org.marsoft.hiptools;
 
 public class HipSpan {
 	private String hip;
+	/**
+	 * %<Киноварь%>
+	 */
 	private boolean red;
+	/**
+	 * %[Разрядка%]
+	 */
 	private boolean spaced;
+	/**
+	 * %(Подзаголовок%)
+	 */
 	private boolean capitalized;
 	private int language;
 	
+	private static final String[] langNames = {
+		"cлав", "рус", "греч", "лат", "глаг"
+	};
 	/**
 	 * <::слав>, церковнославянский язык
 	 */
@@ -60,5 +72,11 @@ public class HipSpan {
 	 */
 	public String asHip() {
 		return getHip();
+	}
+	
+	public static String getLangName(int langId) {
+		if(langId < 0 || langId >= langNames.length)
+			throw new IllegalArgumentException("Неизвестный язык: "+langId);
+		return langNames[langId];
 	}
 }
