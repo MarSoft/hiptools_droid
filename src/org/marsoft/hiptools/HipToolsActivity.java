@@ -27,6 +27,13 @@ public class HipToolsActivity extends Activity {
         sl.setTypeface(font);
         sl.setTextSize(24);
         sl.setText("Прове1рка Ц~С`, тэ3к4с5т6а7. Съе1шь ещё2 этихъ мzгкихъ французскихъ бuлокъ1булок1бу~локъ");
+        
+        try {
+        	loadHip(new File("/sdcard/test.hip"));
+        	sl.setText(hip[10]);
+        } catch(IOException e) {
+        	Toast.makeText(this, "Не удалось загрузить test.hip", Toast.LENGTH_SHORT).show();
+        }
     }
     
     private void loadHip(File file) throws IOException {
