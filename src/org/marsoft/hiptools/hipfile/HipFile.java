@@ -1,9 +1,13 @@
-package org.marsoft.hiptools;
+package org.marsoft.hiptools.hipfile;
 import java.io.File;
 import java.util.Iterator;
 
 /**
  * Класс представляет собой HIP-файл, загруженный в память.
+ * 
+ * TODO: не хранить все данные в памяти, а загружать лишь при создании.
+ * Запоминать номера символов и потом динамически подгружать.
+ * Оправдано ли это?
  * 
  * @author MarSoft
  */
@@ -19,6 +23,11 @@ public class HipFile implements Iterable<HipParagraph> {
 		// TODO
 	}
 	
+	private HipFile parse(String[] paras) {
+		// TODO
+		return null;
+	}
+	
 	/**
 	 * Конвертирует данные из внутреннего представления обратно в HIP
 	 * @return
@@ -28,6 +37,23 @@ public class HipFile implements Iterable<HipParagraph> {
 		for(HipParagraph p: paras)
 			ret += p.asHip();
 		return ret;
+	}
+	
+	/**
+	 * Возвращает количество параграфов в файле.
+	 * @return
+	 */
+	public int getParasCount() {
+		return paras.length;
+	}
+	/**
+	 * Возвращает n-й параграф.
+	 * @throws IndexOutOfBoundsException
+	 * @param n
+	 * @return
+	 */
+	public HipParagraph getPara(int n) {
+		return paras[n];
 	}
 
 	@Override

@@ -1,21 +1,6 @@
-package org.marsoft.hiptools;
+package org.marsoft.hiptools.hipfile;
 
 public class HipSpan {
-	private String hip;
-	/**
-	 * %<Киноварь%>
-	 */
-	private boolean red;
-	/**
-	 * %[Разрядка%]
-	 */
-	private boolean spaced;
-	/**
-	 * %(Подзаголовок%)
-	 */
-	private boolean capitalized;
-	private int language;
-	
 	private static final String[] langNames = {
 		"cлав", "рус", "греч", "лат", "глаг"
 	};
@@ -39,6 +24,21 @@ public class HipSpan {
 	 * <::глаг>, глаголица
 	 */
 	public static final int LANG_GLAGOL = 5;
+	
+	private String hip;
+	/**
+	 * %<Киноварь%>
+	 */
+	private boolean red;
+	/**
+	 * %[Разрядка%]
+	 */
+	private boolean spaced;
+	/**
+	 * %(Подзаголовок%)
+	 */
+	private boolean capitalized;
+	private int language;
 	
 	protected HipSpan(String hip, boolean red, boolean spaced, boolean capitalized, int language) {
 		this.hip = hip;
